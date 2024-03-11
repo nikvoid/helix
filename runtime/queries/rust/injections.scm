@@ -75,3 +75,34 @@
     [(string_literal) (raw_string_literal)] @injection.content
   )
   (#set! injection.language "sql"))
+
+; highlight maud's html! macro as css (best fit?)
+; (macro_invocation
+;   macro: (identifier) @_html (#eq? @_html "html")
+;   (token_tree) @injection.content
+;   (#set! injection.language "css")
+;   (#set! injection.include-children))
+
+; highlight arbitrary literal
+; (
+;   [(block_comment) (line_comment)] @injection.language
+;   [(string_literal) (raw_string_literal)] @injection.content
+; )
+
+; highlight arbitrary string literal (only by block comment, increases INS perf)
+(
+  [(block_comment)] @injection.language
+  [(string_literal) (raw_string_literal)] @injection.content
+)
+
+; Highlight interpolation macros (currenty broken and highlights all)
+; good candidates: 
+;   cue, perl, fish(--), erlang(-), css(-), openscad(-), protobuf,
+;   svelte, 
+;(macro_invocation
+;  macro: ((identifier) @_macro (#any-of? @_macro
+;    "print" "println" "anyhow" "bail" "panic" "write" "writeln" "format"))
+;  (token_tree
+;    [(string_literal) (raw_string_literal)] @injection.content
+;  )
+;  (#set! injection.language "svelte"))
