@@ -26,3 +26,4 @@
   - [Adding indent queries](./guides/indent.md)
   - [Adding injection queries](./guides/injection.md)
   - [Adding rainbow bracket queries](./guides/rainbow_bracket_queries.md)
+  - [Adding symbols queries](./guides/symbols.md)
