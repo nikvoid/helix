@@ -2157,7 +2157,7 @@ impl Editor {
                 _ = helix_event::redraw_requested() => {
                     if  !self.needs_redraw{
                         self.needs_redraw = true;
-                        let timeout = Instant::now() + Duration::from_millis(33);
+                        let timeout = Instant::now() + Duration::from_millis(16);
                         if timeout < self.idle_timer.deadline() && timeout < self.redraw_timer.deadline(){
                             self.redraw_timer.as_mut().reset(timeout)
                         }
